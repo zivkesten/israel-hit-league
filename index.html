@@ -215,7 +215,7 @@ function draw(){
 }
 document.getElementById("liveBox").innerHTML="";
 const BASE=P.map(p=>({...p,hist:[...p.hist]}));
-const DB="https://israel-hit-league-default-rtdb.firebaseio.com";
+const FS="https://firestore.googleapis.com/v1/projects/israel-hit-league/databases/(default)/documents/pub/state";
 let EV={},LIVE=null;
 function recompute(){
  const ids=Object.keys(EV).filter(k=>EV[k]&&!EV[k].u&&EV[k].pts).sort((a,b)=>(EV[a].t||0)-(EV[b].t||0));
@@ -236,10 +236,9 @@ function renderLive(ids){
  if(last.length){h+=`<div class="feed"><h3>תוצאות אחרונות</h3>${last.map(k=>{const e=EV[k],w=BASE[+e.w];const d=new Date(e.t||0);const tm=d.toLocaleTimeString("he-IL",{hour:"2-digit",minute:"2-digit"});return `<div class="fr">ניצחון ל<b>${w.first}</b> <span>${e.pts.map((v,j)=>BASE[j].first+" "+v).join(" · ")}</span><time>${tm}</time></div>`}).join("")}</div>`}
  box.innerHTML=h;
 }
-async function pull(){try{const [a,b]=await Promise.all([fetch(DB+"/events.json").then(r=>r.json()),fetch(DB+"/live.json").then(r=>r.json())]);EV=a||{};LIVE=b;recompute()}catch(e){}}
+async function pull(){try{const d=await fetch(FS).then(r=>r.json());const s=JSON.parse((d.fields&&d.fields.j&&d.fields.j.stringValue)||"{}");EV=s.events||{};LIVE=s.live||null;recompute()}catch(e){}}
 recompute();pull();
-try{["events","live"].forEach(n=>{const es=new EventSource(DB+"/"+n+".json");["put","patch"].forEach(x=>es.addEventListener(x,()=>{clearTimeout(window.__t);window.__t=setTimeout(pull,150)}))})}catch(e){}
-setInterval(pull,30000);
+setInterval(()=>{if(!document.hidden)pull()},4000);
 draw();
 const modal=document.getElementById("modal"),sheet=document.getElementById("sheet");
 function open(i){
