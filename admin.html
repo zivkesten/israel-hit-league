@@ -43,7 +43,8 @@ h3{font-size:14px;color:var(--mut);margin:18px 2px 8px}
 <div class="sheet" id="sheet"><div class="sc"><h2>מי ניצח?</h2><div id="opts"></div><button id="cancel" style="background:none">ביטול</button></div></div>
 <div class="toast" id="toast"></div>
 <script>
-const DB="https://israel-hit-league-default-rtdb.firebaseio.com";
+const FS="https://firestore.googleapis.com/v1/projects/israel-hit-league/databases/(default)/documents/pub/state";
+let S={live:{on:false,pts:[0,0,0,0,0]},events:{}};window.__busy=0;
 const NAMES=["מיכל רפופורט קסטן","נימרוד שי","לוטן שי","סתיו שי נוריאל","זיו קסטן"];
 let K=(location.hash.match(/k=([A-Za-z0-9]+)/)||[])[1]||localStorage.getItem("hk");
 if(location.hash)history.replaceState(null,"",location.pathname);
@@ -51,11 +52,11 @@ let pts=[0,0,0,0,0],on=false,EV={},stack=[];
 const $=id=>document.getElementById(id);
 const toast=m=>{const t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),1200)};
 const nonce=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
-async function write(obj){
- const n=nonce();obj.liveN=n;obj.liveK=K+n;
- try{const r=await fetch(DB+"/.json",{method:"PATCH",body:JSON.stringify(obj)});
-  if(!r.ok){$("st").textContent="● שגיאה";$("st").className="st off";toast(r.status==401?"קוד שגוי":"שגיאה בשמירה");return false}
-  $("st").textContent="● מחובר";$("st").className="st";return true}catch(e){$("st").textContent="● אין חיבור";$("st").className="st off";return false}
+async function write(fn){
+ fn(S);window.__busy++;
+ try{const r=await fetch(FS+"?updateMask.fieldPaths=j&updateMask.fieldPaths=k",{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({fields:{j:{stringValue:JSON.stringify(S)},k:{stringValue:K}}})});
+  if(!r.ok){$("st").textContent="● שגיאה";$("st").className="st off";toast(r.status==403?"קוד שגוי":"שגיאה בשמירה");return false}
+  $("st").textContent="● מחובר";$("st").className="st";return true}catch(e){$("st").textContent="● אין חיבור";$("st").className="st off";return false}finally{window.__busy--}
 }
 function draw(){
  const mx=Math.max(...pts);
@@ -65,25 +66,25 @@ function draw(){
 }
 async function setPts(i,v){
  pts[i]=Math.max(0,v);on=true;draw();
- await write({"live/on":true,["live/pts/"+i]:pts[i]});
+ await write(()=>{S.live.on=true;S.live.pts[i]=pts[i]});
 }
 document.addEventListener("click",async e=>{
  const b=e.target.closest("button");if(!b)return;
  if(b.dataset.p!==undefined){const i=+b.dataset.p;stack.push(i);if(navigator.vibrate)navigator.vibrate(15);setPts(i,pts[i]+1)}
  else if(b.dataset.m!==undefined){const i=+b.dataset.m;setPts(i,pts[i]-1)}
  else if(b.id==="undo"){const i=stack.pop();if(i===undefined)return toast("אין מה לבטל");setPts(i,pts[i]-1)}
- else if(b.id==="reset"){if(!confirm("לאפס את הניקוד של המשחק הנוכחי?"))return;pts=[0,0,0,0,0];stack=[];draw();write({"live/on":false,"live/pts":[0,0,0,0,0]})}
+ else if(b.id==="reset"){if(!confirm("לאפס את הניקוד של המשחק הנוכחי?"))return;pts=[0,0,0,0,0];stack=[];draw();write(()=>{S.live={on:false,pts:[0,0,0,0,0]}})}
  else if(b.id==="fin"){const mx=Math.max(...pts);$("opts").innerHTML=NAMES.map((n,i)=>`<button data-w="${i}" class="${pts[i]===mx&&mx>0?"top":""}">${n} (${pts[i]})</button>`).join("");$("sheet").classList.add("on")}
  else if(b.id==="cancel"){$("sheet").classList.remove("on")}
  else if(b.dataset.w!==undefined){
   const w=+b.dataset.w,id="g"+Date.now().toString(36);$("sheet").classList.remove("on");
-  const ok=await write({["events/"+id]:{t:Date.now(),w:w,pts:pts.slice()},"live/on":false,"live/pts":[0,0,0,0,0]});
-  if(ok){toast("נשמר: "+NAMES[w]);pts=[0,0,0,0,0];stack=[];on=false;EV[id]={t:Date.now(),w,pts:[...pts]};pull();}
+  const fp=pts.slice();const ok=await write(()=>{S.events[id]={t:Date.now(),w:w,pts:fp};S.live={on:false,pts:[0,0,0,0,0]}});
+  if(ok){toast("נשמר: "+NAMES[w]);pts=[0,0,0,0,0];stack=[];on=false;EV=S.events;draw()}
  }
- else if(b.dataset.u!==undefined){const ok=await write({["events/"+b.dataset.u+"/u"]:b.dataset.s==="1"?true:null});if(ok){toast(b.dataset.s==="1"?"המשחק בוטל":"המשחק שוחזר");pull()}}
+ else if(b.dataset.u!==undefined){const k=b.dataset.u,s=b.dataset.s==="1";const ok=await write(()=>{if(S.events[k]){if(s)S.events[k].u=true;else delete S.events[k].u}});if(ok){toast(s?"המשחק בוטל":"המשחק שוחזר");EV=S.events;draw()}}
 });
-async function pull(){try{const [a,l]=await Promise.all([fetch(DB+"/events.json").then(r=>r.json()),fetch(DB+"/live.json").then(r=>r.json())]);EV=a||{};if(l&&l.pts&&!window.__busy){pts=[0,1,2,3,4].map(i=>+(l.pts[i]||0))}draw()}catch(e){}}
+async function pull(){if(window.__busy)return;try{const r=await fetch(FS);if(!r.ok)return;const x=await r.json();const s=JSON.parse((x.fields&&x.fields.j&&x.fields.j.stringValue)||"{}");if(window.__busy)return;S={live:s.live||{on:false,pts:[0,0,0,0,0]},events:s.events||{}};if(!S.live.pts)S.live.pts=[0,0,0,0,0];EV=S.events;pts=[0,1,2,3,4].map(i=>+(S.live.pts[i]||0));draw()}catch(e){}}
 function start(){$("gate").style.display="none";$("app").style.display="block";$("bar").style.display="flex";pull();
- ["live","events"].forEach(n=>{try{const es=new EventSource(DB+"/"+n+".json");["put","patch"].forEach(x=>es.addEventListener(x,()=>{clearTimeout(window.__t);window.__t=setTimeout(pull,250)}))}catch(e){}});}
+ setInterval(pull,4000);}
 if(K){localStorage.setItem("hk",K);start()}else{$("gate").style.display="block";$("kgo").onclick=()=>{K=$("kin").value.trim();if(K){localStorage.setItem("hk",K);start()}}}
 </script></body></html>
