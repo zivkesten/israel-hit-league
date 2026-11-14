@@ -1,0 +1,5 @@
+{"rules":{".read":false,".write":false,
+"liveN":{".write":"newData.parent().child('liveK').val()===root.child('secret').val()+newData.parent().child('liveN').val() && newData.val()!==data.val()"},
+"liveK":{".write":"newData.parent().child('liveK').val()===root.child('secret').val()+newData.parent().child('liveN').val() && newData.parent().child('liveN').val()!==data.parent().child('liveN').val()"},
+"live":{".read":true,".write":"newData.parent().child('liveK').val()===root.child('secret').val()+newData.parent().child('liveN').val() && newData.parent().child('liveN').val()!==data.parent().child('liveN').val()"},
+"events":{".read":true,".write":"newData.parent().child('liveK').val()===root.child('secret').val()+newData.parent().child('liveN').val() && newData.parent().child('liveN').val()!==data.parent().child('liveN').val()"}}}
