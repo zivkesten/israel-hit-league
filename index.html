@@ -211,7 +211,7 @@ function recompute(){
  st.forEach(p=>{p.win=p.games?+(p.wins/p.games*100).toFixed(1):0;p.delta=p.delta+p.add});
  st.sort((a,b)=>b.rating-a.rating);st.forEach((p,i)=>{p.i=i;p.rank=i+1});
  P.length=0;st.forEach(p=>P.push(p));
- document.getElementById("k2").textContent=fmt(P.reduce((a,p)=>a+p.games,0)>>1);
+ document.getElementById("k2").textContent=fmt(ids.length);
  renderPod();draw();renderLive(ids);
 }
 function renderLive(ids){
