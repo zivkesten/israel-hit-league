@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>דירוג היטסטר ישראל | השחקנים הטובים בישראל</title>
+<meta name="description" content="הדירוג הלאומי של שחקני היטסטר בישראל. מקומות, נקודות דירוג, מגמות ופרופילים של 60 השחקנים המובילים.">
+<meta property="og:title" content="דירוג היטסטר ישראל">
+<meta property="og:description" content="הדירוג הלאומי של שחקני היטסטר בישראל - עונת 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b1e;--bg2:#15122e;--card:#1b1738;--line:#2b2552;--tx:#f4f2ff;--mut:#9d98c4;--pink:#ff2e93;--org:#ff8a00;--yel:#ffd23f;--cy:#22e0ff;--grn:#2ee59d;--red:#ff5470}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(900px 500px at 85% -10%,rgba(255,46,147,.22),transparent 60%),radial-gradient(800px 500px at 0% 10%,rgba(34,224,255,.12),transparent 60%);pointer-events:none;z-index:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:20;background:rgba(13,11,30,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;letter-spacing:-.3px}
+.logo i{width:34px;height:34px;border-radius:9px;background:conic-gradient(from 200deg,var(--pink),var(--org),var(--yel),var(--cy),var(--pink));display:grid;place-items:center;font-style:normal;color:#0d0b1e;font-size:18px;transform:rotate(-6deg)}
+.logo small{display:block;font-size:11px;font-weight:500;color:var(--mut);margin-top:-4px;letter-spacing:.4px}
+nav ul{display:flex;gap:26px;list-style:none;font-size:15px;font-weight:500;color:var(--mut)}
+nav ul a{color:inherit;text-decoration:none;transition:.2s}nav ul a:hover{color:var(--tx)}
+.hero{padding:56px 0 30px;text-align:center}
+.pill{display:inline-flex;gap:8px;align-items:center;background:rgba(255,46,147,.12);border:1px solid rgba(255,46,147,.4);color:#ff8cc3;padding:6px 14px;border-radius:99px;font-size:13px;font-weight:700}
+.pill b{width:8px;height:8px;border-radius:50%;background:var(--pink);animation:pu 1.6s infinite}
+@keyframes pu{50%{opacity:.25;transform:scale(1.5)}}
+h1{font-size:clamp(36px,7vw,68px);font-weight:900;line-height:1.05;margin:20px 0 14px;letter-spacing:-1.5px}
+h1 span{background:linear-gradient(90deg,var(--pink),var(--org),var(--yel));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);max-width:620px;margin:0 auto;font-size:18px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:34px 0 8px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 10px}
+.kpi b{display:block;font-size:30px;font-weight:900}.kpi span{color:var(--mut);font-size:13px}
+.podium{display:grid;grid-template-columns:1fr 1.18fr 1fr;gap:16px;align-items:end;margin:46px 0 20px}
+.pod{border-radius:22px;padding:22px 14px 20px;text-align:center;position:relative;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:.25s}
+.pod:hover{transform:translateY(-6px)}
+.pod.p1{background:linear-gradient(180deg,#3a1650,#1b1738 70%);border-color:rgba(255,210,63,.6);padding-top:34px;padding-bottom:30px;box-shadow:0 0 60px rgba(255,138,0,.22)}
+.pod .rk{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:900;color:#0d0b1e;background:#c9c6e6}
+.p1 .rk{background:linear-gradient(135deg,var(--yel),var(--org));width:44px;height:44px;top:-22px;font-size:20px}
+.p3 .rk{background:#d89462}
+.crown{font-size:30px;line-height:1;margin-bottom:6px}
+.av{width:72px;height:72px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;font-weight:900;font-size:26px;color:#0d0b1e}
+.p1 .av{width:96px;height:96px;font-size:36px;box-shadow:0 0 0 4px rgba(255,210,63,.55)}
+.pod h3{font-size:19px;font-weight:800}.p1 h3{font-size:23px}
+.pod .city{color:var(--mut);font-size:13px}
+.pod .rt{font-size:28px;font-weight:900;margin-top:8px;color:var(--yel)}.pod .rt small{font-size:12px;color:var(--mut);font-weight:500}
+.tools{display:flex;gap:12px;flex-wrap:wrap;margin:36px 0 14px;align-items:center}
+.tools input{flex:1;min-width:200px;background:var(--card);border:1px solid var(--line);color:var(--tx);padding:13px 16px;border-radius:12px;font:inherit;font-size:16px;outline:none}
+.tools input:focus{border-color:var(--pink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:var(--card);border:1px solid var(--line);color:var(--mut);padding:9px 15px;border-radius:99px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:.2s}
+.chip.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.row{display:grid;grid-template-columns:56px 1fr 90px 80px 90px 100px;gap:10px;align-items:center;padding:13px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.row:last-child{border:0}.row:not(.hd):hover{background:rgba(255,255,255,.04)}
+.row.hd{cursor:default;color:var(--mut);font-size:12px;font-weight:700;background:var(--bg2);letter-spacing:.4px}
+.row.me{background:linear-gradient(90deg,rgba(255,46,147,.14),transparent)}
+.rank{font-weight:900;font-size:18px;color:var(--mut)}
+.who{display:flex;align-items:center;gap:12px;min-width:0}
+.who .av{width:40px;height:40px;font-size:15px;margin:0;flex:none}
+.who b{display:block;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.who span{font-size:12.5px;color:var(--mut)}
+.num{font-weight:800;font-variant-numeric:tabular-nums}
+.up{color:var(--grn)}.dn{color:var(--red)}.eq{color:var(--mut)}
+.tr{font-weight:700;font-size:14px;white-space:nowrap}
+.spark{width:84px;height:28px}
+.more{display:block;margin:18px auto 0;background:none;border:1px solid var(--line);color:var(--tx);padding:12px 28px;border-radius:12px;font:inherit;font-weight:700;cursor:pointer}
+.more:hover{border-color:var(--pink)}
+section{padding:54px 0 0}
+h2{font-size:30px;font-weight:900;letter-spacing:-.5px;margin-bottom:6px}.sub{color:var(--mut);margin-bottom:22px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.card .tag{font-size:12px;font-weight:700;color:var(--cy);margin-bottom:8px;display:block}
+.card h4{font-size:18px;margin-bottom:6px}.card p{color:var(--mut);font-size:14.5px}
+.card time{display:block;margin-top:12px;font-size:12px;color:#706ba0}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.how div{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px}
+.how em{font-style:normal;font-weight:900;font-size:28px;color:var(--pink);display:block}
+.how p{font-size:14px;color:var(--mut)}
+footer{margin-top:70px;border-top:1px solid var(--line);padding:30px 0 50px;color:#706ba0;font-size:13px;text-align:center}
+.modal{position:fixed;inset:0;background:rgba(5,4,15,.78);backdrop-filter:blur(6px);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.on{display:flex}
+.sheet{background:var(--bg2);border:1px solid var(--line);border-radius:24px;width:100%;max-width:640px;max-height:92vh;overflow:auto;padding:26px;position:relative;animation:up .25s}
+@keyframes up{from{transform:translateY(24px);opacity:0}}
+.x{position:absolute;top:14px;left:14px;width:36px;height:36px;border-radius:50%;border:0;background:var(--card);color:var(--tx);font-size:20px;cursor:pointer}
+.ph{display:flex;gap:16px;align-items:center;margin-bottom:18px}.ph .av{margin:0;width:72px;height:72px;flex:none}
+.ph h3{font-size:26px;font-weight:900;line-height:1.15}.ph span{color:var(--mut);font-size:14px}
+.badges{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 4px}
+.bd{font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;background:rgba(255,210,63,.13);color:var(--yel);border:1px solid rgba(255,210,63,.3)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}.st b{display:block;font-size:22px;font-weight:900}.st span{font-size:12px;color:var(--mut)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:14px}.chart small{color:var(--mut);font-size:12px}
+.bio{color:#cfcaf0;font-size:15px}
+.hist{margin-top:14px;font-size:14px}.hist div{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line);color:var(--mut)}.hist b{color:var(--tx);font-weight:600}
+@media(max-width:760px){
+ nav ul{display:none}.kpis{grid-template-columns:repeat(2,1fr)}
+ .podium{grid-template-columns:1fr;gap:26px}.pod.p1{order:-1}
+ .row{grid-template-columns:34px 1fr 62px 66px;padding:12px 12px;gap:8px}.row .c-g,.row .c-w{display:none}
+ .grid3,.how{grid-template-columns:1fr}.hero{padding-top:36px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+ <div class="logo"><i>♫</i><div>היטסטר ישראל<small>הדירוג הלאומי</small></div></div>
+ <ul><li><a href="#board">הדירוג</a></li><li><a href="#news">חדשות</a></li><li><a href="#how">איך מדרגים</a></li></ul>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+ <span class="pill"><b></b> עונת 2026 · מתעדכן שבועית</span>
+ <h1>מי <span>מכירה</span> הכי הרבה<br>שירים בישראל?</h1>
+ <p>הדירוג הרשמי של שחקני היטסטר הטובים בישראל. מבוסס על תוצאות טורנירים, ליגות קהילתיות ומשחקי דירוג מאומתים.</p>
+ <div class="kpis">
+  <div class="kpi"><b id="k1">60</b><span>שחקנים מדורגים</span></div>
+  <div class="kpi"><b id="k2">0</b><span>משחקי דירוג העונה</span></div>
+  <div class="kpi"><b>14</b><span>ערים</span></div>
+  <div class="kpi"><b>9</b><span>טורנירים העונה</span></div>
+ </div>
+ <div class="podium" id="podium"></div>
+</div></header>
+
+<main class="wrap" id="board">
+ <div class="tools">
+  <input id="q" type="search" placeholder="חיפוש שחקן או עיר...">
+  <div class="chips" id="chips"></div>
+ </div>
+ <div class="tbl" id="tbl"></div>
+ <button class="more" id="more">הצג עוד שחקנים</button>
+
+ <section id="news">
+  <h2>חדשות מהזירה</h2><p class="sub">מה קרה בשבועות האחרונים</p>
+  <div class="grid3">
+   <div class="card"><span class="tag">טורניר</span><h4>גביע תל אביב: ניצחון דרמטי בגמר</h4><p>16 שחקנים הגיעו לגמר ערב שהסתיים בהכרעה ברבע הנקודה האחרון, אחרי שבע סיבובי שובר שוויון.</p><time>8 בנובמבר 2026</time></div>
+   <div class="card"><span class="tag">שיא</span><h4>רצף של 17 ניצחונות ברציפות</h4><p>הרצף הארוך בתולדות הדירוג הישראלי עדיין עומד, ונראה שאין מי שמתקרב אליו.</p><time>3 בנובמבר 2026</time></div>
+   <div class="card"><span class="tag">קהילה</span><h4>ליגת חיפה נפתחת לעונה שנייה</h4><p>מועדון חדש בחיפה מצטרף לדירוג הארצי. שחקני הצפון יעלו לראשונה במאזן הכולל.</p><time>29 באוקטובר 2026</time></div>
+  </div>
+ </section>
+
+ <section id="how">
+  <h2>איך מחשבים את הדירוג?</h2><p class="sub">שיטה פשוטה, שקופה והוגנת</p>
+  <div class="how">
+   <div><em>1</em><p>כל שחקן מתחיל ב-1,000 נקודות ומשתתף במשחקים מאומתים עם לפחות 3 שחקנים.</p></div>
+   <div><em>2</em><p>הניצחון מול שחקן חזק מעלה יותר נקודות. הפסד לשחקן חלש מוריד יותר.</p></div>
+   <div><em>3</em><p>בונוס רצף על ניצחונות רצופים ובונוס טורניר על שלב מתקדם.</p></div>
+   <div><em>4</em><p>הדירוג מתעדכן כל יום ראשון בבוקר ומחושב על 20 המשחקים האחרונים.</p></div>
+  </div>
+ </section>
+</main>
+<footer><div class="wrap">דירוג היטסטר ישראל · פרויקט קהילתי של אוהבי מוזיקה וקלפים<br>האתר אינו קשור לחברת Jumbo או למשחק Hitster ואינו מטעמה.</div></footer>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script>
+// seeded PRNG so the data is stable between visits
+let s=20261114;const R=()=>(s=(s*1664525+1013904223)>>>0)/4294967296;
+const ri=(a,b)=>Math.floor(a+R()*(b-a+1));
+const REG={"מרכז":["תל אביב","רמת גן","פתח תקווה","הרצליה","ראשון לציון","רעננה","גבעתיים","חולון","כפר סבא"],"צפון":["חיפה","קריות","נהריה","עפולה","זכרון יעקב"],"דרום":["באר שבע","אשדוד","אשקלון","אילת"],"ירושלים והסביבה":["ירושלים","מודיעין","בית שמש"]};
+const cityReg={};Object.entries(REG).forEach(([r,cs])=>cs.forEach(c=>cityReg[c]=r));
+const names=[
+["מיכל","רפופורט קסטן","מודיעין"],
+["נועם","אשכנזי","תל אביב"],["דניאל","שטרן","רמת גן"],["יובל","מרגלית","חיפה"],["תמר","ברוכי","ירושלים"],["איתי","קורן","הרצליה"],["שירה","אלמוג","תל אביב"],["עומר","זילברמן","באר שבע"],["ליאור","חדד","ראשון לציון"],["רוני","פלד","גבעתיים"],["אורי","בן דוד","פתח תקווה"],["מאיה","שגיא","רעננה"],["גיא","נחמיאס","אשדוד"],["הילה","אורבך","כפר סבא"],["אסף","לבנון","חולון"],["נטע","ויסמן","ירושלים"],["אלון","רוזנטל","זכרון יעקב"],["דנה","כהן צדק","תל אביב"],["עידו","פרידמן","מודיעין"],["שקד","אברמוב","נהריה"],["תומר","סבן","אשקלון"],["יעל","גולדשטיין","רמת גן"],["רותם","מזרחי","באר שבע"],["ניר","ארבל","קריות"],["מורן","שפירא","חיפה"],["עמית","דיין","הרצליה"],["ענבר","טל","תל אביב"],["בן","אלקיים","ירושלים"],["נעמה","זמיר","גבעתיים"],["ארז","לנדאו","רעננה"],["הדס","בר לב","פתח תקווה"],["רן","אוחיון","אילת"],["לימור","סגל","בית שמש"],["גל","פינטו","חולון"],["אביב","רבינוביץ","ראשון לציון"],["מיטל","עמר","עפולה"],["שחר","וייס","כפר סבא"],["טל","גרינברג","תל אביב"],["אופיר","מלכה","אשדוד"],["נוי","קפלן","מודיעין"],["יואב","דהאן","חיפה"],["עדן","שושן","ירושלים"],["רועי","אפשטיין","רמת גן"],["סיגל","נבון","זכרון יעקב"],["אילן","בכר","באר שבע"],["קרן","יוגב","הרצליה"],["דור","אלבז","אשקלון"],["מור","הלפרין","גבעתיים"],["שיר","בנימין","נהריה"],["אדיר","קליין","פתח תקווה"],["גילי","סער","רעננה"],["ליאם","עטיה","חולון"],["אגם","רום","תל אביב"],["עילי","מנדלסון","ירושלים"],["נגה","טולידנו","ראשון לציון"],["זיו","ברנע","קריות"],["יסמין","כץ","כפר סבא"],["אורן","שלום","אילת"],["הדר","פיינברג","מודיעין"]
+];
+const decades=["שנות ה-60","שנות ה-70","שנות ה-80","שנות ה-90","שנות ה-2000","שנות ה-2010","שירי ילדות ישראליים","רוק ישראלי"];
+const badgesAll=["רצף ניצחונות","אלופת טורניר","מכירה כל עשור","עולה חדשה","אצבע קלה","ותיקה בזירה","מנצחת קלאץ׳","מומחית שנות ה-80","בונה ציר זמן מושלם"];
+const cols=["#ff2e93","#ff8a00","#ffd23f","#22e0ff","#2ee59d","#b18bff","#ff6b6b","#7ab8ff"];
+const P=names.map((n,i)=>{
+ const top=i===0;
+ const rating=top?2184:Math.round(2105-i*14.2-R()*9+(R()-.5)*8);
+ const games=top?214:ri(60,230);
+ const win=top?78.4:+(Math.max(38,71-i*0.55+(R()-.5)*3)).toFixed(1);
+ const streak=top?17:ri(3,11);
+ const delta=top?ri(18,26):ri(-34,38);
+ const hist=[];let r=rating-delta;for(let k=0;k<12;k++){hist.push(Math.round(r));r+=(rating-r)/(12-k)+(R()-.45)*(top?6:20)}
+ hist[11]=rating;
+ return{i,rank:i+1,first:n[0],last:n[1],name:n[0]+" "+n[1],city:n[2],region:cityReg[n[2]],rating,games,win,streak,delta,hist,
+  trend:top?0:0,col:cols[i%cols.length],
+  dec:top?"שנות ה-80":decades[ri(0,decades.length-1)],
+  best:top?"גביע ישראל 2026 – מקום ראשון":(i<12?"גמר "+["אזורי","מרכז","גביע חיפה","ליגת הבוקר"][ri(0,3)]:"חצי גמר "+["אזורי","מרכז","גביע הדרום","ליגת הערב"][ri(0,3)]),
+  since:top?2021:ri(2019,2025),
+  badges:top?["אלופת ישראל 2026","רצף ניצחונות","מכירה כל עשור","מנצחת קלאץ׳","בונה ציר זמן מושלם"]:[...new Set([badgesAll[ri(0,8)],badgesAll[ri(0,8)]])].slice(0,i<10?2:1)};
+});
+// ensure descending order of rating & stable ranks
+P.sort((a,b)=>b.rating-a.rating);P.forEach((p,i)=>{p.rank=i+1;p.i=i});
+const mi=P.findIndex(p=>p.last.startsWith("רפופורט"));
+if(mi!==0){const [m]=P.splice(mi,1);P.unshift(m);P.forEach((p,i)=>{p.rank=i+1;p.i=i});}
+P[0].bio="מיכל פותחת את העונה כפי שסיימה את הקודמת: בראש הטבלה, עם פער של יותר מ-70 נקודות מהמקום השני. ידועה בזיכרון מוזיקלי יוצא דופן ובקור רוח בסיבובי שובר השוויון, ובמיוחד בשירים משנות ה-80 וה-90. אלופת גביע ישראל 2026 ובעלת רצף הניצחונות הארוך ביותר שנרשם בדירוג.";
+P.slice(1).forEach(p=>{p.bio=p.first+" משחק/ת היטסטר מאז "+p.since+" ומתחרה בעיקר באזור "+p.region+". חזק/ה במיוחד ב"+p.dec+". הישג בולט: "+p.best+"."});
+const initials=p=>p.first[0]+p.last.split(" ").pop()[0];
+const av=(p,c="")=>`<div class="av ${c}" style="background:linear-gradient(135deg,${p.col},${cols[(p.i+3)%cols.length]})">${initials(p)}</div>`;
+const trend=p=>{const d=p.delta;return d>0?`<span class="tr up">▲ ${d}</span>`:d<0?`<span class="tr dn">▼ ${-d}</span>`:`<span class="tr eq">–</span>`};
+const spark=(h,col,w=84,hh=28)=>{const mn=Math.min(...h),mx=Math.max(...h);const pts=h.map((v,k)=>`${(k/(h.length-1)*w).toFixed(1)},${(hh-3-(v-mn)/((mx-mn)||1)*(hh-6)).toFixed(1)}`);return `<svg class="spark" viewBox="0 0 ${w} ${hh}"><polyline fill="none" stroke="${col}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="${pts.join(" ")}"/></svg>`};
+const fmt=n=>n.toLocaleString("en-US");
+document.getElementById("k2").textContent=fmt(P.reduce((a,p)=>a+p.games,0)>>1);
+// podium (2,1,3 visual)
+const pod=document.getElementById("podium");
+[1,0,2].forEach(i=>{const p=P[i];pod.insertAdjacentHTML("beforeend",`<div class="pod p${i+1}" data-i="${i}"><div class="rk">${i+1}</div>${i===0?'<div class="crown"><svg width="38" height="28" viewBox="0 0 38 28"><path d="M3 24 1 6l9 8 9-12 9 12 9-8-2 18z" fill="#ffd23f"/><rect x="3" y="24" width="32" height="3" rx="1.5" fill="#ff8a00"/></svg></div>':''}${av(p)}<h3>${p.name}</h3><div class="city">${p.city}</div><div class="rt">${fmt(p.rating)} <small>נק׳</small></div></div>`)});
+// table
+let region="הכל",query="",shown=15;
+const chips=document.getElementById("chips");
+["הכל",...Object.keys(REG)].forEach(r=>{const b=document.createElement("button");b.className="chip"+(r===region?" on":"");b.textContent=r;b.onclick=()=>{region=r;shown=15;[...chips.children].forEach(c=>c.classList.toggle("on",c===b));draw()};chips.appendChild(b)});
+document.getElementById("q").oninput=e=>{query=e.target.value.trim();shown=15;draw()};
+document.getElementById("more").onclick=()=>{shown+=15;draw()};
+function draw(){
+ const list=P.filter(p=>(region==="הכל"||p.region===region)&&(!query||(p.name+p.city).includes(query)));
+ const t=document.getElementById("tbl");
+ t.innerHTML=`<div class="row hd"><div>#</div><div>שחקן</div><div>דירוג</div><div class="c-g">משחקים</div><div class="c-w">אחוז ניצחון</div><div>מגמה</div></div>`+
+ list.slice(0,shown).map(p=>`<div class="row ${p.rank===1?'me':''}" data-i="${p.i}"><div class="rank">${p.rank}</div><div class="who">${av(p)}<div style="min-width:0"><b>${p.name}</b><span>${p.city}</span></div></div><div class="num">${fmt(p.rating)}</div><div class="num c-g">${p.games}</div><div class="num c-w">${p.win}%</div><div style="display:flex;align-items:center;gap:6px;justify-content:space-between">${trend(p)}<span class="c-w">${spark(p.hist,p.delta>=0?"#2ee59d":"#ff5470",56,24)}</span></div></div>`).join("")||`<div class="row hd" style="text-align:center;display:block;padding:30px">לא נמצאו שחקנים</div>`;
+ document.getElementById("more").style.display=list.length>shown?"block":"none";
+}
+draw();
+const modal=document.getElementById("modal"),sheet=document.getElementById("sheet");
+function open(i){
+ const p=P[i];
+ const bd=p.badges.map(b=>`<span class="bd">${b}</span>`).join("");
+ sheet.innerHTML=`<button class="x" aria-label="סגור">×</button>
+ <div class="ph">${av(p)}<div><span>מקום ${p.rank} בישראל · ${p.city}</span><h3>${p.name}</h3></div></div>
+ <div class="badges">${bd}</div>
+ <div class="stats"><div class="st"><b>${fmt(p.rating)}</b><span>דירוג</span></div><div class="st"><b>${p.win}%</b><span>אחוז ניצחון</span></div><div class="st"><b>${p.games}</b><span>משחקים</span></div><div class="st"><b>${p.streak}</b><span>רצף ניצחונות שיא</span></div><div class="st"><b class="${p.delta>=0?'up':'dn'}">${p.delta>0?'+':''}${p.delta}</b><span>שינוי ב-30 יום</span></div><div class="st"><b>${p.since}</b><span>פעיל/ה מאז</span></div></div>
+ <div class="chart"><small>התפתחות הדירוג ב-12 השבועות האחרונים</small>${spark(p.hist,"#ff2e93",560,110).replace('class="spark"','style="width:100%;height:110px"')}</div>
+ <p class="bio">${p.bio}</p>
+ <div class="hist"><div><span>הישג בולט</span><b>${p.best}</b></div><div><span>תחום חוזק</span><b>${p.dec}</b></div><div><span>אזור</span><b>${p.region}</b></div></div>`;
+ modal.classList.add("on");document.body.style.overflow="hidden";
+}
+const close=()=>{modal.classList.remove("on");document.body.style.overflow=""};
+document.addEventListener("click",e=>{
+ if(e.target===modal||e.target.closest(".x"))return close();
+ const el=e.target.closest("[data-i]");if(el)open(+el.dataset.i);
+});
+document.addEventListener("keydown",e=>e.key==="Escape"&&close());
+</script>
+</body>
+</html>
