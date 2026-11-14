@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ליגת הלהיטים הישראלית | דירוג שחקני היטסטר</title>
-<meta name="description" content="הדירוג הלאומי של שחקני היטסטר בישראל. מקומות, נקודות דירוג, מגמות ופרופילים של 60 השחקנים המובילים.">
+<meta name="description" content="הדירוג הלאומי של שחקני היטסטר בישראל. מקומות, נקודות דירוג, מגמות ופרופילים של השחקנים המובילים.">
 <meta property="og:title" content="ליגת הלהיטים הישראלית">
 <meta property="og:description" content="הדירוג הלאומי של שחקני היטסטר בישראל - עונת 2026">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +98,7 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding:30px 0 50px;colo
  nav ul{display:none}.kpis{grid-template-columns:repeat(2,1fr)}
  .podium{grid-template-columns:1fr;gap:26px}.pod.p1{order:-1}
  .row{grid-template-columns:34px 1fr 62px 66px;padding:12px 12px;gap:8px}.row .c-g,.row .c-w{display:none}
+ .who b{white-space:normal;line-height:1.2}
  .grid3,.how{grid-template-columns:1fr}.hero{padding-top:36px}
 }
 </style>
@@ -113,18 +114,18 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding:30px 0 50px;colo
  <h1>מי <span>מכירה</span> הכי הרבה<br>שירים בישראל?</h1>
  <p>הדירוג הרשמי של ליגת הלהיטים: שחקני היטסטר הטובים בישראל. מבוסס על תוצאות טורנירים, ליגות קהילתיות ומשחקי דירוג מאומתים.</p>
  <div class="kpis">
-  <div class="kpi"><b id="k1">60</b><span>שחקנים מדורגים</span></div>
+  <div class="kpi"><b id="k1">5</b><span>שחקנים מדורגים</span></div>
   <div class="kpi"><b id="k2">0</b><span>משחקי דירוג העונה</span></div>
-  <div class="kpi"><b>14</b><span>ערים</span></div>
-  <div class="kpi"><b>9</b><span>טורנירים העונה</span></div>
+  <div class="kpi"><b>2</b><span>אזורים</span></div>
+  <div class="kpi"><b>4</b><span>טורנירים העונה</span></div>
  </div>
  <div class="podium" id="podium"></div>
 </div></header>
 
 <main class="wrap" id="board">
  <div class="tools">
-  <input id="q" type="search" placeholder="חיפוש שחקן או עיר...">
-  <div class="chips" id="chips"></div>
+  <input id="q" type="search" placeholder="חיפוש שחקן...">
+  
  </div>
  <div class="tbl" id="tbl"></div>
  <button class="more" id="more">הצג עוד שחקנים</button>
@@ -132,9 +133,9 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding:30px 0 50px;colo
  <section id="news">
   <h2>חדשות מהזירה</h2><p class="sub">מה קרה בשבועות האחרונים</p>
   <div class="grid3">
-   <div class="card"><span class="tag">טורניר</span><h4>גביע תל אביב: ניצחון דרמטי בגמר</h4><p>16 שחקנים הגיעו לגמר ערב שהסתיים בהכרעה ברבע הנקודה האחרון, אחרי שבע סיבובי שובר שוויון.</p><time>8 בנובמבר 2026</time></div>
+   <div class="card"><span class="tag">טורניר</span><h4>גביע המרכז: ניצחון דרמטי בגמר</h4><p>ערב גמר צמוד שהסתיים בהכרעה בסיבוב שובר שוויון שביעי, אחרי שחמשת המדורגים הובילו לסירוגין.</p><time>8 בנובמבר 2026</time></div>
    <div class="card"><span class="tag">שיא</span><h4>רצף של 17 ניצחונות ברציפות</h4><p>הרצף הארוך בתולדות הדירוג הישראלי עדיין עומד, ונראה שאין מי שמתקרב אליו.</p><time>3 בנובמבר 2026</time></div>
-   <div class="card"><span class="tag">קהילה</span><h4>ליגת חיפה נפתחת לעונה שנייה</h4><p>מועדון חדש בחיפה מצטרף לדירוג הארצי. שחקני הצפון יעלו לראשונה במאזן הכולל.</p><time>29 באוקטובר 2026</time></div>
+   <div class="card"><span class="tag">קהילה</span><h4>הליגה הקהילתית נפתחת לעונה שנייה</h4><p>ההרשמה לעונה החדשה נפתחה. שחקנים חדשים יוכלו להצטרף לדירוג אחרי חמישה משחקים מאומתים.</p><time>29 באוקטובר 2026</time></div>
   </div>
  </section>
 
@@ -157,28 +158,26 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding:30px 0 50px;colo
 let s=20261114;const R=()=>(s=(s*1664525+1013904223)>>>0)/4294967296;
 const ri=(a,b)=>Math.floor(a+R()*(b-a+1));
 const REG={"מרכז":["תל אביב","רמת גן","פתח תקווה","הרצליה","ראשון לציון","רעננה","גבעתיים","חולון","כפר סבא"],"צפון":["חיפה","קריות","נהריה","עפולה","זכרון יעקב"],"דרום":["באר שבע","אשדוד","אשקלון","אילת"],"ירושלים והסביבה":["ירושלים","מודיעין","בית שמש"]};
-const cityReg={};Object.entries(REG).forEach(([r,cs])=>cs.forEach(c=>cityReg[c]=r));
-const names=[
-["מיכל","רפופורט קסטן","מודיעין"],
-["נועם","אשכנזי","תל אביב"],["דניאל","שטרן","רמת גן"],["יובל","מרגלית","חיפה"],["תמר","ברוכי","ירושלים"],["איתי","קורן","הרצליה"],["שירה","אלמוג","תל אביב"],["עומר","זילברמן","באר שבע"],["ליאור","חדד","ראשון לציון"],["רוני","פלד","גבעתיים"],["אורי","בן דוד","פתח תקווה"],["מאיה","שגיא","רעננה"],["גיא","נחמיאס","אשדוד"],["הילה","אורבך","כפר סבא"],["אסף","לבנון","חולון"],["נטע","ויסמן","ירושלים"],["אלון","רוזנטל","זכרון יעקב"],["דנה","כהן צדק","תל אביב"],["עידו","פרידמן","מודיעין"],["שקד","אברמוב","נהריה"],["תומר","סבן","אשקלון"],["יעל","גולדשטיין","רמת גן"],["רותם","מזרחי","באר שבע"],["ניר","ארבל","קריות"],["מורן","שפירא","חיפה"],["עמית","דיין","הרצליה"],["ענבר","טל","תל אביב"],["בן","אלקיים","ירושלים"],["נעמה","זמיר","גבעתיים"],["ארז","לנדאו","רעננה"],["הדס","בר לב","פתח תקווה"],["רן","אוחיון","אילת"],["לימור","סגל","בית שמש"],["גל","פינטו","חולון"],["אביב","רבינוביץ","ראשון לציון"],["מיטל","עמר","עפולה"],["שחר","וייס","כפר סבא"],["טל","גרינברג","תל אביב"],["אופיר","מלכה","אשדוד"],["נוי","קפלן","מודיעין"],["יואב","דהאן","חיפה"],["עדן","שושן","ירושלים"],["רועי","אפשטיין","רמת גן"],["סיגל","נבון","זכרון יעקב"],["אילן","בכר","באר שבע"],["קרן","יוגב","הרצליה"],["דור","אלבז","אשקלון"],["מור","הלפרין","גבעתיים"],["שיר","בנימין","נהריה"],["אדיר","קליין","פתח תקווה"],["גילי","סער","רעננה"],["ליאם","עטיה","חולון"],["אגם","רום","תל אביב"],["עילי","מנדלסון","ירושלים"],["נגה","טולידנו","ראשון לציון"],["זיו","ברנע","קריות"],["יסמין","כץ","כפר סבא"],["אורן","שלום","אילת"],["הדר","פיינברג","מודיעין"]
-];
+const cityReg={"גוש דן":"מרכז","השרון":"מרכז"};//Object.entries(REG).forEach(([r,cs])=>cs.forEach(c=>cityReg[c]=r));
+const names=[["מיכל","רפופורט קסטן","גוש דן"],["נימרוד","שי","גוש דן"],["לוטן","שי","השרון"],["סתיו","שי נוריאל","גוש דן"],["זיו","קסטן","גוש דן"]];
+const RT=[2184,2041,1987,1923,1858],GM=[214,187,162,139,96],WN=[78.4,66.8,61.2,55.7,48.9],ST=[17,9,7,6,4],DL=[22,14,-9,18,-6];
 const decades=["שנות ה-60","שנות ה-70","שנות ה-80","שנות ה-90","שנות ה-2000","שנות ה-2010","שירי ילדות ישראליים","רוק ישראלי"];
 const badgesAll=["רצף ניצחונות","אלופת טורניר","מכירה כל עשור","עולה חדשה","אצבע קלה","ותיקה בזירה","מנצחת קלאץ׳","מומחית שנות ה-80","בונה ציר זמן מושלם"];
 const cols=["#ff2e93","#ff8a00","#ffd23f","#22e0ff","#2ee59d","#b18bff","#ff6b6b","#7ab8ff"];
 const P=names.map((n,i)=>{
  const top=i===0;
- const rating=top?2184:Math.round(2105-i*14.2-R()*9+(R()-.5)*8);
- const games=top?214:ri(60,230);
- const win=top?78.4:+(Math.max(38,71-i*0.55+(R()-.5)*3)).toFixed(1);
- const streak=top?17:ri(3,11);
- const delta=top?ri(18,26):ri(-34,38);
+ const rating=RT[i];
+ const games=GM[i];
+ const win=WN[i];
+ const streak=ST[i];
+ const delta=DL[i];
  const hist=[];let r=rating-delta;for(let k=0;k<12;k++){hist.push(Math.round(r));r+=(rating-r)/(12-k)+(R()-.45)*(top?6:20)}
  hist[11]=rating;
  return{i,rank:i+1,first:n[0],last:n[1],name:n[0]+" "+n[1],city:n[2],region:cityReg[n[2]],rating,games,win,streak,delta,hist,
   trend:top?0:0,col:cols[i%cols.length],
   dec:top?"שנות ה-80":decades[ri(0,decades.length-1)],
-  best:top?"גביע ישראל 2026 – מקום ראשון":(i<12?"גמר "+["אזורי","מרכז","גביע חיפה","ליגת הבוקר"][ri(0,3)]:"חצי גמר "+["אזורי","מרכז","גביע הדרום","ליגת הערב"][ri(0,3)]),
-  since:top?2021:ri(2019,2025),
+  best:top?"גביע ישראל 2026 – מקום ראשון":(i<3?"גמר "+["אזורי","מרכז","גביע חיפה","ליגת הבוקר"][ri(0,3)]:"חצי גמר "+["אזורי","מרכז","גביע הדרום","ליגת הערב"][ri(0,3)]),
+  since:top?2021:ri(2022,2025),
   badges:top?["אלופת ישראל 2026","רצף ניצחונות","מכירה כל עשור","מנצחת קלאץ׳","בונה ציר זמן מושלם"]:[...new Set([badgesAll[ri(0,8)],badgesAll[ri(0,8)]])].slice(0,i<10?2:1)};
 });
 // ensure descending order of rating & stable ranks
@@ -186,7 +185,7 @@ P.sort((a,b)=>b.rating-a.rating);P.forEach((p,i)=>{p.rank=i+1;p.i=i});
 const mi=P.findIndex(p=>p.last.startsWith("רפופורט"));
 if(mi!==0){const [m]=P.splice(mi,1);P.unshift(m);P.forEach((p,i)=>{p.rank=i+1;p.i=i});}
 P[0].bio="מיכל פותחת את העונה כפי שסיימה את הקודמת: בראש הטבלה, עם פער של יותר מ-70 נקודות מהמקום השני. ידועה בזיכרון מוזיקלי יוצא דופן ובקור רוח בסיבובי שובר השוויון, ובמיוחד בשירים משנות ה-80 וה-90. אלופת גביע ישראל 2026 ובעלת רצף הניצחונות הארוך ביותר שנרשם בדירוג.";
-P.slice(1).forEach(p=>{p.bio=p.first+" משחק/ת היטסטר מאז "+p.since+" ומתחרה בעיקר באזור "+p.region+". חזק/ה במיוחד ב"+p.dec+". הישג בולט: "+p.best+"."});
+P.slice(1).forEach(p=>{p.bio=p.first+" בזירת היטסטר הישראלית מאז "+p.since+", עם פעילות בעיקר באזור "+p.region+". נקודת החוזק: "+p.dec+". הישג בולט: "+p.best+"."});
 const initials=p=>p.first[0]+p.last.split(" ").pop()[0];
 const av=(p,c="")=>`<div class="av ${c}" style="background:linear-gradient(135deg,${p.col},${cols[(p.i+3)%cols.length]})">${initials(p)}</div>`;
 const trend=p=>{const d=p.delta;return d>0?`<span class="tr up">▲ ${d}</span>`:d<0?`<span class="tr dn">▼ ${-d}</span>`:`<span class="tr eq">–</span>`};
@@ -198,8 +197,8 @@ const pod=document.getElementById("podium");
 [1,0,2].forEach(i=>{const p=P[i];pod.insertAdjacentHTML("beforeend",`<div class="pod p${i+1}" data-i="${i}"><div class="rk">${i+1}</div>${i===0?'<div class="crown"><svg width="38" height="28" viewBox="0 0 38 28"><path d="M3 24 1 6l9 8 9-12 9 12 9-8-2 18z" fill="#ffd23f"/><rect x="3" y="24" width="32" height="3" rx="1.5" fill="#ff8a00"/></svg></div>':''}${av(p)}<h3>${p.name}</h3><div class="city">${p.city}</div><div class="rt">${fmt(p.rating)} <small>נק׳</small></div></div>`)});
 // table
 let region="הכל",query="",shown=15;
-const chips=document.getElementById("chips");
-["הכל",...Object.keys(REG)].forEach(r=>{const b=document.createElement("button");b.className="chip"+(r===region?" on":"");b.textContent=r;b.onclick=()=>{region=r;shown=15;[...chips.children].forEach(c=>c.classList.toggle("on",c===b));draw()};chips.appendChild(b)});
+const chips={children:[]};
+
 document.getElementById("q").oninput=e=>{query=e.target.value.trim();shown=15;draw()};
 document.getElementById("more").onclick=()=>{shown+=15;draw()};
 function draw(){
@@ -217,7 +216,7 @@ function open(i){
  sheet.innerHTML=`<button class="x" aria-label="סגור">×</button>
  <div class="ph">${av(p)}<div><span>מקום ${p.rank} בישראל · ${p.city}</span><h3>${p.name}</h3></div></div>
  <div class="badges">${bd}</div>
- <div class="stats"><div class="st"><b>${fmt(p.rating)}</b><span>דירוג</span></div><div class="st"><b>${p.win}%</b><span>אחוז ניצחון</span></div><div class="st"><b>${p.games}</b><span>משחקים</span></div><div class="st"><b>${p.streak}</b><span>רצף ניצחונות שיא</span></div><div class="st"><b class="${p.delta>=0?'up':'dn'}">${p.delta>0?'+':''}${p.delta}</b><span>שינוי ב-30 יום</span></div><div class="st"><b>${p.since}</b><span>פעיל/ה מאז</span></div></div>
+ <div class="stats"><div class="st"><b>${fmt(p.rating)}</b><span>דירוג</span></div><div class="st"><b>${p.win}%</b><span>אחוז ניצחון</span></div><div class="st"><b>${p.games}</b><span>משחקים</span></div><div class="st"><b>${p.streak}</b><span>רצף ניצחונות שיא</span></div><div class="st"><b class="${p.delta>=0?'up':'dn'}">${p.delta>0?'+':''}${p.delta}</b><span>שינוי ב-30 יום</span></div><div class="st"><b>${p.since}</b><span>בזירה מאז</span></div></div>
  <div class="chart"><small>התפתחות הדירוג ב-12 השבועות האחרונים</small>${spark(p.hist,"#ff2e93",560,110).replace('class="spark"','style="width:100%;height:110px"')}</div>
  <p class="bio">${p.bio}</p>
  <div class="hist"><div><span>הישג בולט</span><b>${p.best}</b></div><div><span>תחום חוזק</span><b>${p.dec}</b></div><div><span>אזור</span><b>${p.region}</b></div></div>`;
