@@ -154,7 +154,7 @@ let s=20261114;const R=()=>(s=(s*1664525+1013904223)>>>0)/4294967296;
 const ri=(a,b)=>Math.floor(a+R()*(b-a+1));
 const REG={"מרכז":["תל אביב","רמת גן","פתח תקווה","הרצליה","ראשון לציון","רעננה","גבעתיים","חולון","כפר סבא"],"צפון":["חיפה","קריות","נהריה","עפולה","זכרון יעקב"],"דרום":["באר שבע","אשדוד","אשקלון","אילת"],"ירושלים והסביבה":["ירושלים","מודיעין","בית שמש"]};
 const cityReg={"גוש דן":"מרכז","השרון":"מרכז"};//Object.entries(REG).forEach(([r,cs])=>cs.forEach(c=>cityReg[c]=r));
-const names=[["מיכל","רפופורט קסטן","גוש דן"],["נימרוד","שי","גוש דן"],["לוטן","שי","השרון"],["סתיו","שי נוריאל","גוש דן"],["זיו","קסטן","גוש דן"]];
+const names=[["מיכל","רפופורט קסטן",""],["נימרוד","שי",""],["לוטן","שי",""],["סתיו","שי נוריאל",""],["זיו","קסטן",""]];
 const RT=[1500,1500,1500,1500,1500],GM=[0,0,0,0,0],WN=[0,0,0,0,0],ST=[0,0,0,0,0],DL=[0,0,0,0,0];
 const decades=["שנות ה-60","שנות ה-70","שנות ה-80","שנות ה-90","שנות ה-2000","שנות ה-2010","שירי ילדות ישראליים","רוק ישראלי"];
 const badgesAll=["רצף ניצחונות","אלופת טורניר","מכירה כל עשור","עולה חדשה","אצבע קלה","ותיקה בזירה","מנצחת קלאץ׳","מומחית שנות ה-80","בונה ציר זמן מושלם"];
@@ -185,7 +185,7 @@ const spark=(h,col,w=84,hh=28)=>{const mn=Math.min(...h),mx=Math.max(...h);const
 const fmt=n=>n.toLocaleString("en-US");
 // podium (2,1,3 visual)
 const pod=document.getElementById("podium");
-function renderPod(){pod.innerHTML="";[1,0,2].forEach(i=>{const p=P[i];pod.insertAdjacentHTML("beforeend",`<div class="pod p${i+1}" data-i="${i}"><div class="rk">${i+1}</div>${i===0?'<div class="crown"><svg width="38" height="28" viewBox="0 0 38 28"><path d="M3 24 1 6l9 8 9-12 9 12 9-8-2 18z" fill="#ffd23f"/><rect x="3" y="24" width="32" height="3" rx="1.5" fill="#ff8a00"/></svg></div>':''}${av(p)}<h3>${p.name}</h3><div class="city">${p.city}</div><div class="rt">${fmt(p.rating)} <small>נק׳</small></div></div>`)});}
+function renderPod(){pod.innerHTML="";[1,0,2].forEach(i=>{const p=P[i];pod.insertAdjacentHTML("beforeend",`<div class="pod p${i+1}" data-i="${i}"><div class="rk">${i+1}</div>${i===0?'<div class="crown"><svg width="38" height="28" viewBox="0 0 38 28"><path d="M3 24 1 6l9 8 9-12 9 12 9-8-2 18z" fill="#ffd23f"/><rect x="3" y="24" width="32" height="3" rx="1.5" fill="#ff8a00"/></svg></div>':''}${av(p)}<h3>${p.name}</h3><div class="rt">${fmt(p.rating)} <small>נק׳</small></div></div>`)});}
 // table
 let region="הכל",query="",shown=15;
 const chips={children:[]};
@@ -196,7 +196,7 @@ function draw(){
  const list=P.filter(p=>(region==="הכל"||p.region===region)&&(!query||(p.name+p.city).includes(query)));
  const t=document.getElementById("tbl");
  t.innerHTML=`<div class="row hd"><div>#</div><div>שחקן</div><div>דירוג</div><div class="c-g">משחקים</div><div class="c-w">אחוז ניצחון</div><div>מגמה</div></div>`+
- list.slice(0,shown).map(p=>`<div class="row ${p.rank===1?'me':''}" data-i="${p.i}"><div class="rank">${p.rank}</div><div class="who">${av(p)}<div style="min-width:0"><b>${p.name}</b><span>${p.city}</span></div></div><div class="num">${fmt(p.rating)}</div><div class="num c-g">${p.games}</div><div class="num c-w">${p.win}%</div><div style="display:flex;align-items:center;gap:6px;justify-content:space-between">${trend(p)}<span class="c-w">${spark(p.hist,p.delta>=0?"#2ee59d":"#ff5470",56,24)}</span></div></div>`).join("")||`<div class="row hd" style="text-align:center;display:block;padding:30px">לא נמצאו שחקנים</div>`;
+ list.slice(0,shown).map(p=>`<div class="row ${p.rank===1?'me':''}" data-i="${p.i}"><div class="rank">${p.rank}</div><div class="who">${av(p)}<div style="min-width:0"><b>${p.name}</b></div></div><div class="num">${fmt(p.rating)}</div><div class="num c-g">${p.games}</div><div class="num c-w">${p.win}%</div><div style="display:flex;align-items:center;gap:6px;justify-content:space-between">${trend(p)}<span class="c-w">${spark(p.hist,p.delta>=0?"#2ee59d":"#ff5470",56,24)}</span></div></div>`).join("")||`<div class="row hd" style="text-align:center;display:block;padding:30px">לא נמצאו שחקנים</div>`;
  document.getElementById("more").style.display=list.length>shown?"block":"none";
 }
 document.getElementById("liveBox").innerHTML="";
@@ -231,12 +231,12 @@ function open(i){
  const p=P[i];
  const bd=p.badges.map(b=>`<span class="bd">${b}</span>`).join("");
  sheet.innerHTML=`<button class="x" aria-label="סגור">×</button>
- <div class="ph">${av(p)}<div><span>מקום ${p.rank} בישראל · ${p.city}</span><h3>${p.name}</h3></div></div>
+ <div class="ph">${av(p)}<div><span>מקום ${p.rank} בישראל</span><h3>${p.name}</h3></div></div>
  <div class="badges">${bd}</div>
  <div class="stats"><div class="st"><b>${fmt(p.rating)}</b><span>דירוג</span></div><div class="st"><b>${p.win}%</b><span>אחוז ניצחון</span></div><div class="st"><b>${p.games}</b><span>משחקים</span></div><div class="st"><b>${p.streak}</b><span>רצף ניצחונות שיא</span></div><div class="st"><b class="${p.delta>=0?'up':'dn'}">${p.delta>0?'+':''}${p.delta}</b><span>שינוי ב-30 יום</span></div><div class="st"><b>${p.since}</b><span>בזירה מאז</span></div></div>
- <div class="chart"><small>התפתחות הדירוג ב-12 השבועות האחרונים</small>${spark(p.hist,"#ff2e93",560,110).replace('class="spark"','style="width:100%;height:110px"')}</div>
+ <div class="chart"><small>התפתחות הדירוג</small>${spark(p.hist,"#ff2e93",560,110).replace('class="spark"','style="width:100%;height:110px"')}</div>
  <p class="bio">${p.bio}</p>
- <div class="hist"><div><span>הישג בולט</span><b>${p.best}</b></div><div><span>תחום חוזק</span><b>${p.dec}</b></div><div><span>אזור</span><b>${p.region}</b></div></div>`;
+ `;
  modal.classList.add("on");document.body.style.overflow="hidden";
 }
 const close=()=>{modal.classList.remove("on");document.body.style.overflow=""};
